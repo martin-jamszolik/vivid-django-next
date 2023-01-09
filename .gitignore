@@ -1,0 +1,12 @@
+.env
+/backend/.venv
+
+
+.idea
+.vscode
+*.sqlite3
+__pycache__
+__pycache__/*
+*.pyc
+/node_modules
+/**/node_modules
