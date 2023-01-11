@@ -12,7 +12,7 @@ class ProjectViewSet(viewsets.ModelViewSet):
     """
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
 
 
 class ProposalViewSet(viewsets.ModelViewSet):
@@ -21,4 +21,4 @@ class ProposalViewSet(viewsets.ModelViewSet):
     """
     queryset = Proposal.objects.all()
     serializer_class = ProposalSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]

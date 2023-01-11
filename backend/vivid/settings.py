@@ -32,6 +32,9 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+SECURE_SSL_REDIRECT = False
+USE_X_FORWARDED_HOST=True
+APPEND_SLASH=False
 # Application definition
 
 INSTALLED_APPS = [
@@ -134,8 +137,3 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10
-}

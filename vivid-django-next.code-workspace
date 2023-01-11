@@ -10,9 +10,4 @@
 			"path": "frontend"
 		}
 	],
-	"settings": {
-		"cSpell.words": [
-			"makemigrations"
-		]
-	}
 }
