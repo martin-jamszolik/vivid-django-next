@@ -9,8 +9,12 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+# Load Properties from .env file
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ln!3(rar(conk#c_-_*7iyk46#y75)*@kjyvxqqgind9-7=(pq'
+SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -78,10 +82,10 @@ WSGI_APPLICATION = 'vivid.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'HOST': '127.0.0.1',
-        'NAME': 'vivid_db',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
+        'HOST': os.getenv("DB_HOST","127.0.0.1"),
+        'NAME': os.getenv("DB_NAME","vivid_db"),
+        'USER': os.getenv("DB_USERNAME","postgres"),
+        'PASSWORD': os.getenv("DB_PASSWORD"),
         'TEST': {
             'NAME': 'vivid_db_test',
         }

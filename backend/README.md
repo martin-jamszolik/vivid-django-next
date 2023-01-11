@@ -8,9 +8,11 @@ started with our application so you can be productive in no time.
 See [MAIN README](../README.md#database-postgres-setup)
 
 
-## Python Setup
+## Django Setup
 
 See [MAIN README](../README.md#django-backend-setup)
+
+Again, make sure you have reviewed you local `.env` before you start
 
 ## Running backend
 
