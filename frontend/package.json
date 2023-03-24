@@ -3,6 +3,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "export": "next export",
+    "copy-build": "cp -r ./out/* ../backend/static/",
     "start": "next start",
     "cypress": "cypress open",
     "cypress:headless": "cypress run",
