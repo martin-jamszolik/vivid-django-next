@@ -1,5 +1,18 @@
 # Welcome to DevOps
 
+## With Docker Compose
+
+Remember to seed backend db service first. See backend [README.md](../backend/README.md)
+
+```sh
+cd ..
+docker-compose up -d --build
+# check status
+docker-compose ps
+# check logs
+docker-compose logs -f
+```
+
 ## How to Create a Helm Chart
 
 TBD
@@ -8,9 +21,7 @@ TBD
 
 TBD
 
-## How to run E2E using Docker Compose
 
-TBD
 
 ## How to CD
 

@@ -10,10 +10,12 @@ __pycache__/*
 *.pyc
 /node_modules
 /**/node_modules
+/backend/static/*
 
 # next.js
 /frontend/.next/
 /frontend/out/
+/frontend/cypress/videos/*
 
 # production
 /build
