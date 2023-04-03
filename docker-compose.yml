@@ -14,13 +14,17 @@ services:
       - POSTGRES_PASSWORD=postgres
     networks:
       - vivid-network
+
   backend:
-    build: backend
-    command: python manage.py runserver 0.0.0.0:8000
+    container_name: django
+    build:
+      context: backend
+      dockerfile: Dockerfile
     volumes:
-      - ./backend:/code
+      - /var/run/docker.sock:/var/run/docker.sock
+      - static:/app/backend/static
     ports:
-      - "8000:8000"
+      - 8000:8000
     environment:
       - POSTGRES_NAME=postgres
       - POSTGRES_USER=postgres
@@ -28,11 +32,45 @@ services:
       - DB_HOST=db
     networks:
       - vivid-network
+    links:
+      - db
     depends_on:
       - db
+  webapp:
+    container_name: nextjs
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    networks:
+      - vivid-network
+    command:
+      "npm start"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - node-modules:/app/webapp/node_modules
+    links:
+      - backend
+  nginx:
+    container_name: nginx
+    image: nginx
+    build:
+      context: devops/nginx
+      dockerfile: Dockerfile
+    volumes:
+      - static:/app/backend/static
+    ports:
+      - 8080:8080
+    links: 
+      - backend
+      - webapp
+    networks:
+      - vivid-network
+    command: [nginx-debug, '-g', 'daemon off;']
 
 volumes:
   db:
+  node-modules:
+  static:
 
 networks:
   vivid-network:
