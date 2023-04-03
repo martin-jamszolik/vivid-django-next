@@ -8,7 +8,7 @@ module.exports = (phase, { defaultConfig }) => {
         return [
           {
             source: '/api/:path*/',
-            destination: 'http://localhost:8000/api/:path*/', // Matched parameters can be used in the destination
+            destination: 'http://127.0.0.1:8000/api/:path*/', // Matched parameters can be used in the destination
           },
         ]
       },
